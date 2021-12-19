@@ -1,0 +1,21 @@
+{
+  "name": "tutorialapi",
+  "version": "1.0.0",
+  "description": "\"database for youtube tutorial\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Dennis Deveza",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "joi": "^17.5.0",
+    "mariadb": "^2.5.5",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.12.0",
+    "sequelize-cli": "^6.3.0"
+  }
+}
