@@ -31,10 +31,10 @@ class Tutorial {
         
     };
     updateTutorial = async (req, res) =>{
-        res.status(200).send("Updated");
+        res.status(200).send("TESTING");
     };
     deleteTutorial = async (req, res) =>{
-        res.status(200).send("Deleted");
+        res.status(200).send("tESTING");
     };
 }
 
