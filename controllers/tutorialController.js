@@ -1,4 +1,6 @@
+
 const tutModel = require('../model/tutorialModel');
+const getYoutubeID = require('../utility/youtubeID');
 
 class Tutorial {
     getList = async (req, res) =>{ 
@@ -14,18 +16,24 @@ class Tutorial {
 
     };
     createTutorial = async (req, res) =>{
-        const body = {
-            title:'Testing',
-            tag:'Testing',
-            link:'Testing',
-            thumbnail:'https://img.youtube.com/vi/Crk_5Xy8GMA/0.jpg',
-            summary: 'Testing'
-        }
+
+        let body = await req.body;
+        let {link} =body;
+
+        const youtubeID = getYoutubeID(link);
+        let thumbnail = `https://img.youtube.com/vi/${youtubeID}/0.jpg`;
+        body = {...req.body ,thumbnail};
+      
         try {
-            const data = await tutModel.create(body);
-            res.json(data);
+            if (body) {
+                const data = await tutModel.create(body);
+                res.json(data);
+            }else {
+                res.status(404).json({err:"Empty Object"})
+            }
+            
         } catch (err) {
-            res.send({error:err.toString()})
+            res.status(404).send({error:err.toString()})
         }
        
         
