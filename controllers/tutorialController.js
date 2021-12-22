@@ -7,7 +7,7 @@ class Tutorial {
         
         try {
             tutModel.findAll().then(data=>{
-                res.json(data);
+                data.length?res.json(data) : res.json("Empty Data");
             });
           
         } catch (error) {
