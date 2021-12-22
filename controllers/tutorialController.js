@@ -6,7 +6,12 @@ class Tutorial {
     getList = async (req, res) =>{ 
         
         try {
-            tutModel.findAll().then(data=>{
+            tutModel.findAll({
+                order: [
+                    // Will escape title and validate DESC against a list of valid direction parameters
+                    ['id', 'DESC'],
+                ]
+            }).then(data=>{
                 data.length?res.json(data) : res.json("Empty Data");
             });
           
